@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6f3"><meta name="description" content="中央判断と接触判断を体験する Landmark Task．練習なしの144問，正答率・反応時間・課題時刻を記録．">
+  <title>Landmark Task｜中央判断と接触判断</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <section id="home" class="page">
+    <header class="topbar"><a class="brand" href="#" aria-label="Landmark Task ホーム"><span class="brand-icon" aria-hidden="true"><i></i></span>Landmark<span class="brand-light">Task</span></a><span class="top-pill"><span></span>ブラウザで体験</span></header>
+    <div class="home-grid">
+      <div class="intro">
+        <p class="eyebrow">VISUOSPATIAL ATTENTION / 2013</p>
+        <h1>線を見て，<br>ふたつの判断を．</h1>
+        <p class="lead">縦線は，中央にありますか？<br>水平線に，接触していますか？</p>
+        <p class="description">Cai et al. の Landmark Task に基づく体験です．<br>左手のふたつのキーで回答します．</p>
+        <div class="facts"><div><strong id="home-trial-count">144</strong><span>問の判断</span></div><div><strong id="home-duration">7:17</strong><span>本番の目安</span></div><div><strong id="home-cycle-count">6</strong><span>セット</span></div></div>
+        <div class="route" aria-label="セットの順番"><span><b>LM</b>中央判断</span><span class="route-arrow">→</span><span><b>LMC</b>接触判断</span><span class="route-arrow">→</span><span><b>Rest</b>安静</span></div>
+        <div class="reference-note"><span class="note-symbol">i</span><p>記録するのは正答率と反応時間です．脳活動の左右差を評価するには，別途計測が必要です．</p></div>
+      </div>
+      <div class="setup-card">
+        <div class="card-heading"><span class="eyebrow">READY TO START</span><span class="small-pill">練習なし</span></div>
+        <div class="illustration" aria-hidden="true"><svg viewBox="0 0 420 110"><path d="M44 55H376M210 34V76" fill="none" stroke="currentColor" stroke-width="2.3"/></svg><span>線の中央と接触を判断します</span></div>
+        <label class="field-label" for="participant">参加者 ID <span>任意</span></label><input id="participant" maxlength="60" placeholder="例：P001" autocomplete="off">
+        <div class="answer-guide"><div class="keybox"><kbd>F</kbd><div><b>はい</b><span>左手人差し指</span></div></div><div class="keybox"><kbd>D</kbd><div><b>いいえ</b><span>左手中指</span></div></div></div>
+        <p class="key-description">LM は「中央か」，LMC は「接触しているか」に回答します．回答後も，表示時間は一定です．</p>
+        <div class="setup-options"><label class="check"><input type="checkbox" id="fullscreen" checked>全画面で開始</label><button id="settings-open" class="text-button">表示・実施設定 <span aria-hidden="true">↗</span></button></div>
+        <button id="start" class="button primary start-button">本番を開始 <span aria-hidden="true">→</span></button>
+        <p class="device-note" id="device-note">PC のキーボードをご使用ください．</p>
+      </div>
+    </div>
+    <div id="recovery" class="recovery" hidden><div><b>前回の記録があります</b><p id="recovery-detail"></p></div><button class="button secondary" id="restore">記録を見る</button><button class="text-button" id="clear-recovery">削除</button></div>
+    <div class="how-grid"><article><span class="step-number">01</span><h2>指示を確認</h2><p>各課題の前に 4 秒間，判断の内容を表示します．</p></article><article><span class="step-number">02</span><h2>1.6 秒以内に回答</h2><p>F または D を 1 回押します．次の問題まで 0.2 秒間空白になります．</p></article><article><span class="step-number">03</span><h2>安静をはさむ</h2><p>中央の＋を見て，回答せずに 21.6 秒間休みます．</p></article></div>
+    <footer><div><span>Cai et al.（2013）に基づく体験版</span><a href="https://doi.org/10.1073/pnas.1212956110" target="_blank" rel="noopener">原著論文 ↗</a></div><button id="protocol-open" class="text-button">採用した条件について</button></footer>
+  </section>
+  <section id="run" class="run-page" hidden>
+    <div class="run-header"><div><span id="run-condition" class="condition-tag">LM</span><span id="run-label">中央判断</span></div><div class="run-tools"><span id="run-counter"></span><button id="pause" class="text-button">一時停止</button><button id="abort" class="text-button danger">中止</button></div></div>
+    <div class="run-progress"><div id="run-progress-fill"></div></div>
+    <div class="stage">
+      <div id="instruction-view" class="instruction-view" hidden><p id="instruction-caption" class="eyebrow"></p><h2 id="instruction-title"></h2><p id="instruction-subtitle"></p><div class="instruction-keys"><span><kbd>F</kbd><b id="yes-label"></b></span><span><kbd>D</kbd><b id="no-label"></b></span></div><div class="countdown" id="instruction-countdown"></div></div>
+      <div id="stimulus-view" class="stimulus-view" hidden><svg id="stimulus" role="img" aria-label="判断対象の水平線と縦線"></svg></div>
+      <div id="rest-view" class="rest-view" hidden><span aria-label="中央の注視点">+</span></div>
+      <div id="paused-view" class="paused-view" hidden><span class="eyebrow">PAUSED</span><h2>一時停止中</h2><p id="pause-reason">再開すると，残りの時間から続きます．</p><p class="muted">刺激表示中に中断した問題は，成績集計から除外します．</p><button class="button primary" id="resume">続ける →</button></div>
+    </div>
+    <div id="run-footer" class="run-footer"><span id="run-hint"></span><span id="run-remaining"></span></div>
+  </section>
+  <section id="results" class="page results-page" hidden>
+    <header class="topbar"><a class="brand" href="#"><span class="brand-icon" aria-hidden="true"><i></i></span>Landmark<span class="brand-light">Task</span></a><span class="top-pill">SESSION REPORT</span></header>
+    <div class="results-heading"><div><p class="eyebrow">YOUR RESULTS</p><h1 id="result-title">おつかれさまでした．</h1><p id="result-subtitle"></p></div><span id="result-status" class="status-pill"></span></div>
+    <div class="result-card-grid" id="result-cards"></div>
+    <div class="result-lower-grid"><article class="panel"><div class="panel-heading"><h2>中央判断の内訳</h2><span>LM</span></div><div class="table-wrap"><table><thead><tr><th>位置</th><th>有効試行</th><th>正答率</th><th>平均 RT</th></tr></thead><tbody id="detail-body"></tbody></table></div><p class="table-note">反応時間（RT）は正答のみの集計です．</p></article><article class="panel download-panel"><p class="eyebrow">EXPORT YOUR SESSION</p><h2>記録を手元に．</h2><p>試行ごとの回答，課題の開始終了時刻，<br>設定と出題順を保存できます．</p><button id="download-trials" class="button primary">試行 CSV を保存 <span>↓</span></button><div class="download-row"><button id="download-events" class="button secondary">イベント CSV ↓</button><button id="download-json" class="button secondary">設定・全記録 JSON ↓</button></div><p class="export-note">データはこのブラウザ内に保持します．外部サーバには送信しません．</p></article></div>
+    <div class="result-note" id="result-note"></div><div class="result-actions"><button id="back-home" class="button secondary">開始画面に戻る</button><span>次の本番を始める前に，必要な記録を保存してください．</span></div>
+    <footer><span>Landmark Task · v1.0.0</span><a href="https://doi.org/10.1073/pnas.1212956110" target="_blank" rel="noopener">DOI：10.1073/pnas.1212956110 ↗</a></footer>
+  </section>
+</main>
+<dialog id="settings-dialog"><div class="dialog-heading"><h2>表示・実施設定</h2><button class="icon-button" data-close="settings-dialog" aria-label="閉じる">×</button></div><label class="field-label" for="cycles">セット数</label><select id="cycles"><option value="6">6 セット / 144 問 / 約 7 分 17 秒</option><option value="1">1 セット / 24 問 / 約 1 分 13 秒（短縮体験）</option><option value="3">3 セット / 72 問 / 約 3 分 38 秒（短縮体験）</option></select><p class="help">原著に基づく本番は 6 セットです．短縮体験でも提示時間は変わりません．</p><label class="field-label" for="line-length">水平線の長さ <output id="line-length-value">600 px</output></label><input type="range" id="line-length" min="240" max="900" step="10" value="600"><div id="calibration-preview" class="calibration-preview"><div></div></div><p class="help">プレビューを定規で測り，必要に応じて調整してください．px だけでは実寸を保証できません．</p><label class="field-label" for="distance">観察距離 <span>任意，cm</span></label><input id="distance" type="number" min="10" max="300" step="1" placeholder="例：50"><label class="field-label" for="measured-length">測った水平線の長さ <span>任意，cm</span></label><input id="measured-length" type="number" min="1" max="50" step="0.1" placeholder="例：15"><p class="help" id="visual-angle">距離と実寸を入力すると，視角の目安を表示します．</p><button id="settings-save" class="button primary full-width">設定を適用</button></dialog>
+<dialog id="protocol-dialog"><div class="dialog-heading"><h2>採用した条件</h2><button class="icon-button" data-close="protocol-dialog" aria-label="閉じる">×</button></div><p>原著に基づく条件は，LM・LMC 各 6 ブロック，各 12 問，課題前の指示 4 秒，刺激 1.6 秒，刺激間隔 0.2 秒です．LM のずれ量は線の全長の ±2.5 %，±5.0 %，±7.5 %です．</p><p>「LM → LMC → Rest」の固定順，Rest の 21.6 秒，中央の＋，線の見た目，キー割り当て，ブロック内の配分は，体験アプリ側の設定です．原著の方法欄だけでは，休憩の秒数と全ブロックの厳密な順序を確定できません．</p><p>原著の水平線は 15 cm，視角は 8°です．このアプリでは画面の px を指定し，実寸と観察距離は任意で記録します．</p><p>本番中のタブ切替や画面サイズ変更は自動一時停止として記録します．刺激表示中に中断した試行は成績集計から除外し，CSV には残します．ブラウザで取得する描画時刻は，画面の物理的な発光時刻を直接測った値ではありません．</p><p><b>Cai et al.（2013）</b><br>Complementary hemispheric specialization for language production and visuospatial attention<br>DOI：10.1073/pnas.1212956110<br><a href="https://doi.org/10.1073/pnas.1212956110" target="_blank" rel="noopener">原著論文を開く ↗</a></p></dialog>
+<dialog id="abort-dialog"><div class="dialog-heading"><h2>本番を中止しますか？</h2></div><p>ここまでの記録を保持し，結果画面から保存できます．</p><div class="dialog-actions"><button id="cancel-abort" class="button secondary">続ける</button><button id="confirm-abort" class="button destructive">中止して結果を見る</button></div></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+
+
+
+<script src="script.js"></script>
+</body></html>
